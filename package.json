@@ -1,0 +1,22 @@
+{
+  "name": "hackutd-2021-bbbot",
+  "version": "1.0.0",
+  "description": "Blackboard bot submission for HackUTD 2021",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nartmobile/HackUTD-2021-BBBot.git"
+  },
+  "author": "Benson Mitsevich, Andrew Tran, Justin Yu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nartmobile/HackUTD-2021-BBBot/issues"
+  },
+  "homepage": "https://github.com/nartmobile/HackUTD-2021-BBBot#readme",
+  "dependencies": {
+    "discord.js": "^12.5.1"
+  }
+}
