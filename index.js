@@ -1,7 +1,22 @@
 const fs = require('fs');
 const Discord = require('discord.js');
-const client = new Discord.Client();
 const { prefix, token } = require('./config.json');
+const mongo = require('./mongo.js');
+const mongoose = require('mongoose');
+const classSchema = require('./schemas/class-schema.js');
+
+const connectToMongoDB = async () => {
+	await mongo().then(mongoose => {
+		try {
+			console.log("connected to mongodb");
+		} finally {
+		}
+	})
+}
+
+
+
+const client = new Discord.Client();
 client.commands = new Discord.Collection();
 
 //looking at files that end with .js for commands
@@ -19,7 +34,7 @@ client.once('ready', () => {
 	console.log('Ready!');
 });
 
-client.on('messaage', async message => {
+client.on('message', async message => {
 	if(!message.content.startsWith(prefix) || message.author.bot) return;
 
 	const args = message.content.slice(prefix.length).trim().split(/ +/);
@@ -27,7 +42,7 @@ client.on('messaage', async message => {
 
 	if(!client.commands.has(command)) return;
 
-	try{
+	try {
 		client.commands.get(command).execute(message, args);
 	} catch(error){
 		console.error(error);
@@ -35,5 +50,8 @@ client.on('messaage', async message => {
 	}
 });
 
+
+
 client.login(token);
+connectToMongoDB();
 
